@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LinkPreviewApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="{Binding ImageUri}"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+                Text="{Binding LinkTitle}"
+                Style="{StaticResource SubHeadline}"
+                FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="{Binding LinkDescripton}"
+                FontSize="Body"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Put your link:"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Entry 
+                Text="{Binding Link}">
+            </Entry>
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Go to the link" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Command="{Binding GoToLinkCommand}"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
