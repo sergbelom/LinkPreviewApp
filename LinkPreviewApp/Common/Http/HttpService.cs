@@ -41,7 +41,7 @@ namespace LinkPreviewApp.Common.Http
             string responseBody = string.Empty;
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(baseUrl);
-            var apiKey = "d94451fb5a9d9bef0d83f0fb910dded2";
+            var apiKey = "123456";
             try
             {
                 client.DefaultRequestHeaders.Add("X-Linkpreview-Api-Key", apiKey);
