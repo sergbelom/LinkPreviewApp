@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using LinkPreviewApp.Services;
+using Newtonsoft.Json;
 using NSubstitute;
+using Serilog;
+using Serilog.Core;
 using System.Net;
 
 namespace LinkPreviewApp.Common.Http.Tests
@@ -12,8 +15,12 @@ namespace LinkPreviewApp.Common.Http.Tests
         [SetUp]
         public void Setup()
         {
+            var mockLogger = new LoggerConfiguration().CreateLogger();
+            var appLogService = new AppLogService();
+            typeof(AppLogService).GetField("_logger", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(appLogService, mockLogger);
+
             _httpClientService = Substitute.For<IHttpClientService>();
-            _httpService = new HttpService(_httpClientService);
+            _httpService = new HttpService(_httpClientService, appLogService);
         }
 
         [Test]

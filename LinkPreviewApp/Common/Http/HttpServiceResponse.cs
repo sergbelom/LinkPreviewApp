@@ -2,6 +2,10 @@
 
 namespace LinkPreviewApp.Common.Http;
 
+/// <summary>
+/// Response container
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class HttpServiceResponse<T> where T : class
 {
     public T Content { get; set; }

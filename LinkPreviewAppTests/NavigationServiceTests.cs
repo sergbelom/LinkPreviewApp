@@ -1,4 +1,7 @@
 ﻿using LinkPreviewApp.Services;
+using NSubstitute;
+using Serilog;
+using Serilog.Core;
 
 namespace LinkPreviewAppTests
 {
@@ -10,7 +13,11 @@ namespace LinkPreviewAppTests
         [SetUp]
         public void SetUp()
         {
-            _navigationService = new NavigationService();
+            var mockLogger = new LoggerConfiguration().CreateLogger();
+            var appLogService = new AppLogService();
+            typeof(AppLogService).GetField("_logger", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(appLogService, mockLogger);
+
+            _navigationService = new NavigationService(appLogService);
         }
 
         [Test]

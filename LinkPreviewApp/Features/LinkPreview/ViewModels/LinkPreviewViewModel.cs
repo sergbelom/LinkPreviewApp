@@ -94,7 +94,6 @@ namespace LinkPreviewApp.Features.LinkPreview.ViewModels
             IsLoading = true;
             ResetMessages();
             LoadingMessage = "Sending request, please wait ... ";
-            //TODO: Loading icon with clock
             var result = await _linkPreviewDataService.FetchLinkPreviewData(_rawLinkText);
 
             if (null == result) {

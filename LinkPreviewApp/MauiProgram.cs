@@ -32,6 +32,7 @@ namespace LinkPreviewApp
 
         public static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
         {
+            mauiAppBuilder.Services.AddSingleton<AppLogService>();
             mauiAppBuilder.Services.AddTransient<IHttpClientService, HttpClientService>();
             mauiAppBuilder.Services.AddTransient<IHttpService, HttpService>();
             mauiAppBuilder.Services.AddTransient<ILinkPreviewDataService, LinkPreviewDataService>();
@@ -42,7 +43,7 @@ namespace LinkPreviewApp
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
-            mauiAppBuilder.Services.AddSingleton<LinkPreviewViewModel>();            
+            mauiAppBuilder.Services.AddSingleton<LinkPreviewViewModel>();
             return mauiAppBuilder;
         }
 
