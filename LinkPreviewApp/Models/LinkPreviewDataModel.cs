@@ -8,6 +8,7 @@ namespace LinkPreviewApp.Models
 {
     public class LinkPreviewDataModel
     {
+        //TODO: use NewtonJson
         public string Title { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
@@ -15,5 +16,6 @@ namespace LinkPreviewApp.Models
         public int ImageX { get; set; }
         public string IconType { get; set; }
         public string Locale { get; set; }
+        public string Error { get; set; }
     }
 }

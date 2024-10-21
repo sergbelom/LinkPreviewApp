@@ -1,6 +1,6 @@
 ﻿using LinkPreviewApp.Models;
 
-namespace LinkPreviewApp.Services;
+namespace LinkPreviewApp.Features.LinkPreview.Services;
 
 public interface ILinkPreviewDataService
 {

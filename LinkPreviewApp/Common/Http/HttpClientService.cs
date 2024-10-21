@@ -8,19 +8,16 @@ namespace LinkPreviewApp.Common.Http
 {
     public class HttpClientService : IHttpClientService
     {
-        public HttpClient CreateHttpClient(int timeOut = 120)
+        public HttpClient CreateHttpClient(Uri baseAddress, int timeOut = 120)
         {
             var clientHandler = new HttpClientHandler()
             {
-                AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate
+                SslProtocols= System.Security.Authentication.SslProtocols.Tls12
             };
 
             var httpClient = new HttpClient(clientHandler);
-
-            //autorization header
-
+            httpClient.BaseAddress = baseAddress;
             httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
-
             return httpClient;
         }
     }

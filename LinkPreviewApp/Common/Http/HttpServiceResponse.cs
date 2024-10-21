@@ -1,13 +1,15 @@
-﻿namespace LinkPreviewApp.Common.Http;
+﻿using System.Net;
+
+namespace LinkPreviewApp.Common.Http;
 
 public class HttpServiceResponse<T>
 {
     public T Content { get; set; }
-    public object Error { get; set; }
-    public int StatusCode { get; set; }
+    public string Error { get; set; }
+    public HttpStatusCode StatusCode { get; set; }
     public bool IsSuccessful { get; set; }
 
-    public HttpServiceResponse(T content, object error, int statusCode, bool isSuccessful)
+    public HttpServiceResponse(T content, string error, HttpStatusCode statusCode, bool isSuccessful)
     {
         Content = content;
         Error = error;

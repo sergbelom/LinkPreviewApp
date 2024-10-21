@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LinkPreviewApp.Features.LinkPreview.Views.LinkPreviewView">
+
+    <ContentView.Content>
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+
+                <Label
+                    Text="Put your link here:"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource SubHeadline}"
+                    SemanticProperties.HeadingLevel="Level1" />
+
+                <Entry 
+                    Text="{Binding RawLinkText}">
+                </Entry>
+
+                <Button
+                    Text="Create Preview"
+                    SemanticProperties.Hint="Click for Create Preview"
+                    Command="{Binding CreatePreviewCommand}"
+                    HorizontalOptions="Fill" />
+
+                <!--LoadingMessage-->
+                <VerticalStackLayout
+                    IsVisible="{Binding IsLoading}"
+                    Spacing="10">
+                    <Label
+                        Text="{Binding LoadingMessage}"
+                        Style="{StaticResource SubHeadline}"
+                        FontAttributes="Bold"
+                        SemanticProperties.HeadingLevel="Level1" />
+                </VerticalStackLayout>
+
+                <!--LinkPreview-->
+                <Grid
+                    IsVisible="{Binding LinkPreviewIsVisible}"
+                    RowDefinitions="Auto,*,Auto,Auto">
+                    <Label Grid.Row="0"
+                        Text="Preview for the link:"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource SubHeadline}"
+                        SemanticProperties.HeadingLevel="Level1" />
+                    <Image Grid.Row="1" Margin="0,20,0,20"
+                        Source="{Binding ImageUri}">
+                    </Image>
+                    <Label Grid.Row="2"
+                        Text="{Binding LinkTitle}"
+                        Style="{StaticResource SubHeadline}"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        SemanticProperties.HeadingLevel="Level1" />
+                    <Label Grid.Row="3"
+                        Text="{Binding LinkDescripton}"
+                        FontSize="Body"
+                        SemanticProperties.HeadingLevel="Level1" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LinkPreviewTappedCommand}" NumberOfTapsRequired="1"  />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!--ErrorMessage-->
+                <VerticalStackLayout
+                    IsVisible="{Binding ErrorIsVisible}"
+                    Spacing="10">
+                    <Label
+                        Text="{Binding ErrorMessage}"
+                        Style="{StaticResource SubHeadline}"
+                        FontAttributes="Bold"
+                        SemanticProperties.HeadingLevel="Level1" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>
