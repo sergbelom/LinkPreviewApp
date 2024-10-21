@@ -1,5 +1,5 @@
 ﻿using LinkPreviewApp.Common.Http;
-using LinkPreviewApp.Models;
+using LinkPreviewApp.Features.LinkPreview.Models;
 
 namespace LinkPreviewApp.Features.LinkPreview.Services
 {
@@ -16,10 +16,16 @@ namespace LinkPreviewApp.Features.LinkPreview.Services
         {
             var parameters = new Dictionary<string, string>
             {
-                { "fields", "image_x,icon_type,locale" },
-                { "q", Uri.EscapeDataString(link) }
+                { GlobalConfiguration.LINKPREVIEW_FIELDS_QUERY_KEY, GlobalConfiguration.LINKPREVIEW_FIELDS_QUERY_VALUE },
+                { GlobalConfiguration.LINKPREVIEW_LINK_QUERY_KEY, Uri.EscapeDataString(link) }
             };
-            var result = await _httpService.GetAsync<LinkPreviewDataModel>(GlobalConfiguration.LINKPREVIEW_BASE, GlobalConfiguration.LINKPREVIEW_API_KEY_HEADER, link, parameters);
+            var result = await _httpService.GetAsync<LinkPreviewDataModel>
+                (GlobalConfiguration.LINKPREVIEW_BASE,
+                GlobalConfiguration.LINKPREVIEW_API_KEY_HEADER,
+                GlobalConfiguration.LINKPREVIEW_API_KEY,
+                link,
+                parameters);
+
             return result.Content != null ? result.Content : new LinkPreviewDataModel() { Error = result.Error };
         }
     }

@@ -12,7 +12,7 @@ namespace LinkPreviewApp.Common.Http
             _httpClientService = httpClientService;
         }
 
-        public async Task<HttpServiceResponse<T>> GetAsync<T>(string baseAddress, string header, string link, Dictionary<string, string> parameters) where T : class
+        public async Task<HttpServiceResponse<T>> GetAsync<T>(string baseAddress, string header, string apiKey, string link, Dictionary<string, string> parameters) where T : class
         {
             try
             {
@@ -24,7 +24,6 @@ namespace LinkPreviewApp.Common.Http
                     queryString += parameters.ToQueryString();
                 }
 
-                var apiKey = "d94451fb5a9d9bef0d83f0fb910dded2";
                 httpClient.DefaultRequestHeaders.Add(header, apiKey);
 
                 //TOOD: we need Dispose for the httpClient
@@ -49,7 +48,6 @@ namespace LinkPreviewApp.Common.Http
             catch (Exception e)
             {
                 return new HttpServiceResponse<T>(default(T), "An internal error occurred.", HttpStatusCode.InternalServerError, false);
-                //log e.Message
             }
         }
 

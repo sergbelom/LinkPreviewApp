@@ -9,15 +9,11 @@ namespace LinkPreviewApp.Features.LinkPreview.Views
             InitializeComponent();
 
             HandlerChanged += OnHandlerChanged;
-
-            //BindingContext = Handler?.MauiContext?.Services.GetService<LinkPreviewViewModel>();
         }
 
         private void OnHandlerChanged(object? sender, EventArgs e)
         {
             BindingContext = Handler?.MauiContext?.Services.GetService<LinkPreviewViewModel>();
         }
-        
-
     }
 }

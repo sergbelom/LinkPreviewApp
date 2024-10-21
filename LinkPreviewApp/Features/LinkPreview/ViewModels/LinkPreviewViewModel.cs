@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace LinkPreviewApp.Features.LinkPreview.ViewModels
 {
-    internal class LinkPreviewViewModel : BaseViewModel
+    public class LinkPreviewViewModel : BaseViewModel
     {
         private string _linkPreviewUrl;
 

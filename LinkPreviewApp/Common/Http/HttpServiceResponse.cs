@@ -2,7 +2,7 @@
 
 namespace LinkPreviewApp.Common.Http;
 
-public class HttpServiceResponse<T>
+public class HttpServiceResponse<T> where T : class
 {
     public T Content { get; set; }
     public string Error { get; set; }

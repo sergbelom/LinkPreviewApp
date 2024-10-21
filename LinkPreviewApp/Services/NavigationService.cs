@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LinkPreviewApp.Services
+﻿namespace LinkPreviewApp.Services
 {
-    internal class NavigationService : INavigationService
+    public class NavigationService : INavigationService
     {
-        private INavigation _navigation;
+        //private INavigation _navigation;
 
         public async Task OpenBrowserAsync(string _linkPreviewUrl)
         {
@@ -27,6 +21,7 @@ namespace LinkPreviewApp.Services
             }
             catch (Exception ex)
             {
+                // log the error
                 // An unexpected error occurred. No browser may be installed on the device.
             }
         }

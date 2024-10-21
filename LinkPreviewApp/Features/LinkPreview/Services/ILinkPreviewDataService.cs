@@ -1,4 +1,4 @@
-﻿using LinkPreviewApp.Models;
+﻿using LinkPreviewApp.Features.LinkPreview.Models;
 
 namespace LinkPreviewApp.Features.LinkPreview.Services;
 

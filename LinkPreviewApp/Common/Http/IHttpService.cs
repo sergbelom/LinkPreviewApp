@@ -2,5 +2,5 @@
 
 public interface IHttpService
 {
-    Task<HttpServiceResponse<T>> GetAsync<T>(string baseAddress, string header, string link, Dictionary<string, string> queryParams) where T : class;
+    Task<HttpServiceResponse<T>> GetAsync<T>(string baseAddress, string header, string apiKey, string link, Dictionary<string, string> queryParams) where T : class;
 }
