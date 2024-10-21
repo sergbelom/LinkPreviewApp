@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using LinkPreviewApp.Resources;
 using LinkPreviewApp.Services;
 using Newtonsoft.Json;
 
@@ -35,29 +36,25 @@ namespace LinkPreviewApp.Common.Http
                     string responseBody = await response.Content.ReadAsStringAsync();
                     var evaluatedResponse = JsonConvert.DeserializeObject<T>(responseBody);
                     if (evaluatedResponse != null) {
-                        var infoMsg = "Recived evaluated response";
-                        _logService.LogWarning(infoMsg);
+                        _logService.LogWarning(AppResources.InfoMessage_RecivedEvaluatedResponse);
                         return new HttpServiceResponse<T>(evaluatedResponse, string.Empty, response.StatusCode, response.IsSuccessStatusCode);
                     }
                     else
                     {
-                        var warningMsg = "Unable to recognize the response from the service";
-                        _logService.LogWarning(warningMsg);
-                        return new HttpServiceResponse<T>(default(T), warningMsg, HttpStatusCode.InternalServerError, false);
+                        _logService.LogWarning(AppResources.WarningMessage_UnableRecognizeResponseFromService);
+                        return new HttpServiceResponse<T>(default(T), AppResources.WarningMessage_UnableRecognizeResponseFromService, HttpStatusCode.InternalServerError, false);
                     }
                 }
                 else
                 {
-                    var errorMsg = "No response from service.";
-                    _logService.LogWarning(errorMsg);
-                    return new HttpServiceResponse<T>(default(T), errorMsg, HttpStatusCode.InternalServerError, false);
+                    _logService.LogWarning(AppResources.ErrorMessage_NoResponseFromService);
+                    return new HttpServiceResponse<T>(default(T), AppResources.ErrorMessage_NoResponseFromService, HttpStatusCode.InternalServerError, false);
                 }
             }
             catch (Exception e)
             {
-                var exceptionMsg = "An internal error occurred.";
-                _logService.LogWarning(exceptionMsg);
-                return new HttpServiceResponse<T>(default(T), exceptionMsg, HttpStatusCode.InternalServerError, false);
+                _logService.LogWarning(AppResources.ErrorMessage_AnInternalErrorOccurred);
+                return new HttpServiceResponse<T>(default(T), AppResources.ErrorMessage_AnInternalErrorOccurred, HttpStatusCode.InternalServerError, false);
             }
         }
 

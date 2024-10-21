@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using NSubstitute;
 using Serilog;
-using Serilog.Core;
 using System.Net;
 
 namespace LinkPreviewApp.Common.Http.Tests

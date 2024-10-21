@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:strings="clr-namespace:LinkPreviewApp.Resources"
              x:Class="LinkPreviewApp.Features.LinkPreview.Views.LinkPreviewView">
 
     <ContentView.Content>
@@ -10,7 +11,7 @@
                 Spacing="25">
 
                 <Label
-                    Text="Put your link here:"
+                    Text="{x:Static strings:AppResources.Write_link_here}"
                     HorizontalOptions="Start"
                     Style="{StaticResource SubHeadline}"
                     SemanticProperties.HeadingLevel="Level1" />
@@ -20,8 +21,8 @@
                 </Entry>
 
                 <Button
-                    Text="Create Preview"
-                    SemanticProperties.Hint="Click for Create Preview"
+                    Text="{x:Static strings:AppResources.Create_Preview}"
+                    SemanticProperties.Hint="{x:Static strings:AppResources.Click_Create_Preview}"
                     Command="{Binding CreatePreviewCommand}"
                     HorizontalOptions="Fill" />
 
@@ -39,22 +40,27 @@
                 <!--LinkPreview-->
                 <Grid
                     IsVisible="{Binding LinkPreviewIsVisible}"
-                    RowDefinitions="Auto,*,Auto,Auto">
+                    RowDefinitions="Auto,Auto,*,Auto,Auto">
                     <Label Grid.Row="0"
-                        Text="Preview for the link:"
+                        Text="{x:Static strings:AppResources.PreviewForLink}"
                         HorizontalOptions="Start"
                         Style="{StaticResource SubHeadline}"
                         SemanticProperties.HeadingLevel="Level1" />
-                    <Image Grid.Row="1" Margin="0,20,0,20"
+                    <Label Grid.Row="1"
+                        Text="{x:Static strings:AppResources.Tap_on_Preview}"
+                        HorizontalOptions="Start"
+                        FontSize="Body"
+                        SemanticProperties.HeadingLevel="Level1" />
+                    <Image Grid.Row="2" Margin="0,20,0,20"
                         Source="{Binding ImageUri}">
                     </Image>
-                    <Label Grid.Row="2"
+                    <Label Grid.Row="3"
                         Text="{Binding LinkTitle}"
                         Style="{StaticResource SubHeadline}"
                         FontAttributes="Bold"
                         HorizontalOptions="Start"
                         SemanticProperties.HeadingLevel="Level1" />
-                    <Label Grid.Row="3"
+                    <Label Grid.Row="4"
                         Text="{Binding LinkDescripton}"
                         FontSize="Body"
                         SemanticProperties.HeadingLevel="Level1" />

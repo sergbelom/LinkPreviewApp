@@ -8,7 +8,7 @@
     Title="LinkPreviewApp">
 
     <ShellContent
-        Title="Link Preview"
+        Title="Link Preview v.1.0"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

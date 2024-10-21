@@ -1,5 +1,6 @@
 ﻿using LinkPreviewApp.Common;
 using LinkPreviewApp.Features.LinkPreview.Services;
+using LinkPreviewApp.Resources;
 using LinkPreviewApp.Services;
 using System.Windows.Input;
 
@@ -93,14 +94,14 @@ namespace LinkPreviewApp.Features.LinkPreview.ViewModels
         {
             IsLoading = true;
             ResetMessages();
-            LoadingMessage = "Sending request, please wait ... ";
+            LoadingMessage = AppResources.LoadingMessage;
             var result = await _linkPreviewDataService.FetchLinkPreviewData(_rawLinkText);
 
             if (null == result) {
                 IsLoading = false;
                 LinkPreviewIsVisible = false;
                 ErrorIsVisible = true;
-                ErrorMessage = "No response from service.";
+                ErrorMessage = AppResources.ErrorMessage_NoResponseFromService;
             }
             else
             {
