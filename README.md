@@ -2,6 +2,10 @@
 
 **LinkPreviewApp** is a MAUI application for generating website previews. The app uses the **LinkPreview API** to retrieve images and descriptions for the preview. [Documentation for LinkPreview API](https://docs.linkpreview.net/)
 
+<p align="center">
+  <img src="https://github.com/sergbelom/LinkPreviewApp/blob/main/LinkPreviewApp.jpg?raw=true" alt="LinkPreviewApp"/>
+</p>
+
 ### Features
 
 - The app allows users to create a website preview and navigate to the site by clicking on the preview. The default browser is opened for the link.
